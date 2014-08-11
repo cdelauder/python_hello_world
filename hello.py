@@ -1,6 +1,6 @@
 import os
 from flask import Flask
-from flask import render_template
+from flask import render_template, redirect, session
 
 app = Flask(__name__)
 
@@ -12,6 +12,11 @@ def hello():
 @app.route('/wat')
 def wat():
     return render_template('wat.html')
+
+@app.route('/name', methods=['POST'])
+def name():
+    session['name'] = name
+    return redirect('/')
 
 
 if __name__=='__main__':
