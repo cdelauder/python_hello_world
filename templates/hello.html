@@ -1,5 +1,6 @@
 <!doctype html>
 <h1>HELLO WORLD</h1>
 <a href="/wat">WAT</a>
-
-<h3>Hello {{name}}</h3>
+{% if name %}
+    <h3>Hello {{name}}</h3>
+{% endif %}

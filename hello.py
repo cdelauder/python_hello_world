@@ -1,8 +1,9 @@
 import os
 from flask import Flask
-from flask import render_template, redirect, session
+from flask import render_template, redirect, session, request
 
 app = Flask(__name__)
+
 
 @app.route('/')
 def hello():
@@ -15,13 +16,11 @@ def wat():
 
 @app.route('/name', methods=['POST'])
 def name():
-    print 'VICTORY!'
-    session['name'] = name #figure out how to retrieve the form data and put it here
-    print session
+    session['name'] = request.form['name']
     return redirect('/')
 
 
 if __name__=='__main__':
-    app.secret_key = '5fsdjfjew490j43igjerpogrspg-=greife'
+    app.secret_key = '5'
     app.run(debug = True, use_reloader = True)
 
