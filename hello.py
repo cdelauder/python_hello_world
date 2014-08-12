@@ -6,7 +6,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def hello():
-    return render_template('hello.html')
+    return render_template('hello.html', name=session['name'])
 
 
 @app.route('/wat')
@@ -15,9 +15,13 @@ def wat():
 
 @app.route('/name', methods=['POST'])
 def name():
-    session['name'] = name
+    print 'VICTORY!'
+    session['name'] = name #figure out how to retrieve the form data and put it here
+    print session
     return redirect('/')
 
 
 if __name__=='__main__':
+    app.secret_key = '5fsdjfjew490j43igjerpogrspg-=greife'
     app.run(debug = True, use_reloader = True)
+
