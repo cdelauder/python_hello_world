@@ -7,7 +7,10 @@ app = Flask(__name__)
 
 @app.route('/')
 def hello():
-    return render_template('hello.html', name=session['name'])
+    if session:
+        return render_template('hello.html', name=session['name'])
+    else:
+        return render_template('hello.html', name='')
 
 
 @app.route('/wat')
