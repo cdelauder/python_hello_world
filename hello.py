@@ -24,7 +24,7 @@ def name():
         session['name'] = request.form['name']
     else:
         session['name'] = request.form['name']
-    return redirect('/')
+    return redirect('/'), 302
 
 
 if __name__=='__main__':
