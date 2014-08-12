@@ -19,7 +19,11 @@ def wat():
 
 @app.route('/name', methods=['POST'])
 def name():
-    session['name'] = request.form['name']
+    if session:
+        session.pop('name', None)
+        session['name'] = request.form['name']
+    else:
+        session['name'] = request.form['name']
     return redirect('/')
 
 
