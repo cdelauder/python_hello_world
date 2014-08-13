@@ -4,7 +4,6 @@ from flask import render_template, redirect, session, request
 
 app = Flask(__name__)
 
-
 @app.route('/')
 def hello():
     if session:
@@ -19,6 +18,7 @@ def wat():
 
 @app.route('/name', methods=['POST'])
 def name():
+    print request.form
     if session:
         session.pop('name', None)
         session['name'] = request.form['name']
